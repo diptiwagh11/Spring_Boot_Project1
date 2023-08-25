@@ -1,5 +1,7 @@
 package com.rt.Service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,4 +17,21 @@ public class StdService {
 		
 		Dao.save(s);
 	}
+
+	public Student selectbyId(int id) {
+		Student s1=null;
+		Optional<Student> s=Dao.findById(id);
+		
+		if(s.isPresent()){
+			s1=s.get();
+			return s1;
+		}
+		return s1;
+	}
+
+	public Student deleteDataById(int id) {
+		Dao.deleteById(id);
+		return null;
+	}
+	
 }
